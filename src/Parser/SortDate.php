@@ -32,6 +32,6 @@ class SortDate implements SortDateInterface
         }
 
         array_multisort($date_array, SORT_STRING, $array_sort);
-        return $date_array;
+        return $array_sort;
     }
 }
