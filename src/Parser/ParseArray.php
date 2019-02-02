@@ -12,14 +12,20 @@ use Exception;
 class ParseArray implements ParseArrayInterface
 {
     private $array_line = [];
+    private $date_start = '';
+    private $date_end = '';
 
     /**
      * ParseArrayInterface constructor.
      * @param array $array_line
+     * @param string $date_start
+     * @param string $date_end
      */
-    public function __construct(array $array_line)
+    public function __construct(array $array_line, string $date_start, string $date_end)
     {
         $this->array_line = $array_line;
+        $this->date_start = $date_start;
+        $this->date_end = $date_end;
     }
 
     /**
@@ -43,7 +49,7 @@ class ParseArray implements ParseArrayInterface
             }
         }
 
-        return SortDate::sortDateArray($result);
+        return SortDate::sortDateArray($result, $this->date_start, $this->date_end);
     }
 
     /**

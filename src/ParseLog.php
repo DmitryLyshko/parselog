@@ -14,13 +14,16 @@ use src\File\File;
 class ParseLog
 {
     /**
+     * @param string $date_start
+     * @param string $date_end
+     * @return array
      * @throws Exception
      */
-    public static function parse()
+    public static function parse(string $date_start = '', string $date_end = '')
     {
         $file_path = Config::getFilePath();
         $file_array = self::getFile($file_path);
-        $parse_array = new ParseArray($file_array);
+        $parse_array = new ParseArray($file_array, $date_start, $date_end);
         return $parse_array->parseArray();
     }
 
