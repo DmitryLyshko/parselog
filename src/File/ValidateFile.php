@@ -2,8 +2,6 @@
 
 namespace Log\File;
 
-use src\File\ValidateInFileInterface;
-
 /**
  * Class ValidateFile
  * @package App\File

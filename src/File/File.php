@@ -2,8 +2,6 @@
 
 namespace Log\File;
 
-use App\File\ValidateFile;
-
 /**
  * Class File
  * @package parselog\File
