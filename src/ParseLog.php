@@ -38,7 +38,3 @@ class ParseLog
         return File::fileToArray($file_path);
     }
 }
-
-require_once '../vendor/autoload.php';
-$t = new ParseLog();
-$t->parse();
