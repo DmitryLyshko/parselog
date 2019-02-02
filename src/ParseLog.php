@@ -2,10 +2,10 @@
 
 namespace Log;
 
-use App\Config\Config;
-use App\Parser\ParseArray;
+use Log\Config\Config;
+use Log\Parser\ParseArray;
 use Exception;
-use src\File\File;
+use Log\File\File;
 
 /**
  * Class ParseLog
