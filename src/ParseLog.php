@@ -1,6 +1,6 @@
 <?php
 
-namespace src;
+namespace Log;
 
 use App\Config\Config;
 use App\Parser\ParseArray;

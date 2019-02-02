@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace Log\Command;
 
 use Exception;
 use Illuminate\Console\Command;

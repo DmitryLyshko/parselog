@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Parser;
+namespace Log\Parser;
 
 /**
  * Interface SortDateInterface

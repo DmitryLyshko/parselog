@@ -1,6 +1,6 @@
 <?php
 
-namespace App\File;
+namespace Log\File;
 
 use src\File\ValidateInFileInterface;
 
