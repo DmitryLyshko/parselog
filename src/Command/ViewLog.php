@@ -5,7 +5,7 @@ namespace Log\Command;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
-use src\ParseLog;
+use Log\ParseLog;
 
 /**
  * Class ViewLog
