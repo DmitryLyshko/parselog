@@ -2,6 +2,7 @@
   "name": "parselog/laravel-parse-log",
   "description": "parse log file",
   "minimum-stability": "dev",
+  "version": "1.0",
   "license": "proprietary",
   "authors": [
     {
