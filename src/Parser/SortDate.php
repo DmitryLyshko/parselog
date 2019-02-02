@@ -18,12 +18,7 @@ class SortDate implements SortDateInterface
     {
         $date_array = [];
         foreach($array_sort as $key => $arr) {
-            if ($time_start !== '' && (int) $time_start > (int) $arr['date']) {
-                unset($array_sort[$key]);
-                continue;
-            }
-
-            if ($time_end !== '' && (int) $time_end > (int) $arr['date']) {
+            if ($time_end !== '' && (int) $time_end > (int) $arr['date'] && (int) $time_start > (int) $arr['date']) {
                 unset($array_sort[$key]);
                 continue;
             }
