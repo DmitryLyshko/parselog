@@ -1,37 +1,31 @@
 <?php
-
 namespace Log\Command;
-
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use Log\ParseLog;
-
 /**
- * Class EmailSendLog
- * @package Log\Command
+ * Class ViewLog
+ * @package App\Command
  */
-class EmailSendLog extends Command
+class ViewLog extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'log:send_email';
-
+    protected $signature = 'log:view';
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send email laravel log';
-
+    protected $description = 'View laravel log';
     /**
      * Execute the console command.
      *
      * @return mixed
-     * @throws \Exception
      */
     public function handle()
     {
@@ -41,27 +35,14 @@ class EmailSendLog extends Command
         } catch (Exception $e) {
             $this->info("Error: " . $e->getMessage());
         }
-
         if ($logs !== []) {
             $dt = Carbon::now();
-            $errorMessage = '';
             foreach ($logs as $log) {
-                $errorMessage .= 'Date: ' . $dt->setTimestamp($log['date']) . "\n";
-                $errorMessage .= 'Error: ' . $log['error'] . "\n\n";
+                $this->info("Date: " . $dt->setTimestamp($log['date']));
+                $this->warn($log['error']);
             }
-
-            \Mail::raw($errorMessage, function ($message) {
-                $date = Carbon::now();
-                $message->to('dr-westa@ya.ru');
-                $message->to('agerasimov.developer@gmail.com');
-                $message->subject('Dinrem // Ошибки за ' . $date->format('y-m-d'));
-            });
-
-            $this->info("Send email");
-
             return;
         }
-
         $this->info("Empty log today");
     }
 }
