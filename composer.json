@@ -16,6 +16,6 @@
     "phpunit/phpunit": "8.0"
   },
   "autoload": {
-    "classmap": ["src"]
+    "classmap": ["src/"]
   }
 }
