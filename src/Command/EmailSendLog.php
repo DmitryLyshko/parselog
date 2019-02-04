@@ -52,10 +52,6 @@ class EmailSendLog extends Command
 
             \Mail::raw($errorMessage, function ($message) {
                 $date = Carbon::now();
-                $message->to('ipshon@gmail.com');
-                $message->to('mekirile@gmail.com');
-                $message->to('aa@dinrem.com');
-                $message->to('dispector312@gmail.com');
                 $message->to('dr-westa@ya.ru');
                 $message->to('agerasimov.developer@gmail.com');
                 $message->subject('Dinrem // Ошибки за ' . $date->format('y-m-d'));
