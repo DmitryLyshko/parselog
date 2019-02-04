@@ -8,29 +8,30 @@ use Illuminate\Support\Carbon;
 use Log\ParseLog;
 
 /**
- * Class ViewLog
- * @package App\Command
+ * Class EmailSendLog
+ * @package Log\Command
  */
-class ViewLog extends Command
+class EmailSendLog extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'log:view';
+    protected $signature = 'log:send_email';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'View laravel log';
+    protected $description = 'Send email laravel log';
 
     /**
      * Execute the console command.
      *
      * @return mixed
+     * @throws \Exception
      */
     public function handle()
     {
@@ -43,10 +44,20 @@ class ViewLog extends Command
 
         if ($logs !== []) {
             $dt = Carbon::now();
+            $errorMessage = '';
             foreach ($logs as $log) {
-                $this->info("Date: " . $dt->setTimestamp($log['date']));
-                $this->warn($log['error']);
+                $errorMessage .= 'Date: ' . $dt->setTimestamp($log['date']) . "\n";
+                $errorMessage .= 'Error: ' . $log['error'] . "\n\n";
             }
+
+            \Mail::raw($errorMessage, function ($message) {
+                $date = Carbon::now();
+                $message->to('dr-westa@ya.ru');
+                $message->to('agerasimov.developer@gmail.com');
+                $message->subject('Dinrem // Ошибки за ' . $date->format('y-m-d'));
+            });
+
+            $this->info("Send email");
 
             return;
         }
